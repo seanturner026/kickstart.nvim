@@ -64,6 +64,7 @@ vim.opt.listchars:append({ lead = '·' })
 vim.opt.listchars:append({ space = '·' })
 vim.opt.listchars:append({ tab = '➞ ' })
 vim.opt.listchars:append({ trail = '·' })
+vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 
 -- [[ Configure plugins ]]
@@ -120,6 +121,15 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',  opts = {} },
+  {
+    -- Theme inspired by Atom
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+  },
+
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -193,15 +203,6 @@ require('lazy').setup({
         map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
       end,
     },
-  },
-
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
   },
 
   {
@@ -442,10 +443,36 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
+<<<<<<< HEAD
     ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+||||||| parent of f8a9d2f (Added nvim-tree)
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim' },
+=======
+    ensure_installed = {
+      'bash',
+      'dockerfile',
+      'dot',
+      'go',
+      'gomod',
+      'gosum',
+      'gowork',
+      'hcl',
+      'html',
+      'json',
+      'lua',
+      'make',
+      'python',
+      'sql',
+      'terraform',
+      'toml',
+      'vim',
+      'vimdoc',
+      'yaml',
+    },
+>>>>>>> f8a9d2f (Added nvim-tree)
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-    auto_install = false,
+    auto_install = true,
 
     highlight = { enable = true },
     indent = { enable = true },
