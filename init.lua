@@ -596,7 +596,9 @@ require('which-key').register({
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
-require('mason-lspconfig').setup()
+require('mason-lspconfig').setup {
+  automatic_installation = true,
+}
 
 -- Enable the following language servers
 --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
@@ -608,12 +610,17 @@ require('mason-lspconfig').setup()
 --  define the property 'filetypes' to the map in question.
 local servers = {
   -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
   -- rust_analyzer = {},
   -- tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
+  bashls = {},
+  docker_compose_language_service = {},
+  dockerls = {},
+  gopls = {},
+  helm_ls = {},
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
+  jsonls = {},
+  pyright = {},
+  yamlls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
