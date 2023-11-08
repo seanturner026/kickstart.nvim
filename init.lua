@@ -66,6 +66,7 @@ vim.opt.listchars:append({ tab = '➞ ' })
 vim.opt.listchars:append({ trail = '·' })
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
+vim.opt.textwidth = 120
 
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
@@ -333,6 +334,10 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnos
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 
+-- Remap for smooth vertical jumps
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Center cursor after moving up a half-page" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Center cursor after moving down a half-page" })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
@@ -356,6 +361,12 @@ require('telescope').setup {
     },
   },
 }
+
+-- Remove trailing whitespaces
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*" },
+  command = [[%s/\s\+$//e]],
+})
 
 -- require('ibl').setup({
 --   indent = {
@@ -615,12 +626,81 @@ local servers = {
   bashls = {},
   docker_compose_language_service = {},
   dockerls = {},
-  gopls = {},
+  gopls = {
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    settings = {
+      gopls = {
+        gofumpt = true,
+        codelenses = {
+          gc_details = false,
+          generate = true,
+          regenerate_cgo = true,
+          run_govulncheck = true,
+          test = true,
+          tidy = true,
+          upgrade_dependency = true,
+          vendor = true,
+        },
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        },
+        analyses = {
+          fieldalignment = true,
+          nilness = true,
+          unusedparams = true,
+          unusedwrite = true,
+          useany = true,
+        },
+        usePlaceholders = true,
+        completeUnimported = true,
+        staticcheck = true,
+        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
+        semanticTokens = true,
+      },
+    },
+  },
   helm_ls = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   jsonls = {},
   pyright = {},
-  yamlls = {},
+  terraformls = {},
+  yamlls = {
+    settings = {
+      redhat = { telemetry = { enabled = false } },
+      yaml = {
+        completion = true,
+        hover = true,
+        validate = true,
+        format = {
+          enable = true,
+        },
+        schemaStore = {
+          -- Must disable built-in schemaStore support to use
+          -- schemas from SchemaStore.nvim plugin
+          enable = false,
+          -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+          url = '',
+        },
+        schemas = {
+          ['kubernetes'] = '*.{yaml,yml}',
+          -- JSON & YAML schemas http://schemastore.org/json/
+          ['https://json.schemastore.org/circleciconfig'] = '.circleci/**/*.{yml,yaml}',
+          ['https://json.schemastore.org/github-action'] = '.github/action.{yml,yaml}',
+          ['https://json.schemastore.org/github-workflow'] = '.github/workflows/*.{yml,yaml}',
+          ['https://json.schemastore.org/kustomization.json'] = 'kustomization.{yml,yaml}',
+          ['https://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
+          ['https://json.schemastore.org/stylelintrc'] = '.stylelintrc.{yml,yaml}',
+        },
+      },
+    },
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
