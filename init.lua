@@ -83,7 +83,10 @@ require('lazy').setup({
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-
+  -- Install Mason stuff that doesn't have a keyword
+  'WhoIsSethDaniel/mason-tool-installer.nvim',
+  -- Run black and isort on save
+  'stevearc/conform.nvim',
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
@@ -325,8 +328,8 @@ vim.o.termguicolors = true
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Remap for dealing with word wrap
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gjzz' : 'j'", { expr = true, silent = true })
 
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
@@ -669,7 +672,12 @@ local servers = {
   helm_ls = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   jsonls = {},
-  pyright = {},
+  -- https://microsoft.github.io/pyright/#/settings?id=pyright-settings
+  pyright = {
+    analyses = {
+      autoImportCompletion = true
+    }
+  },
   terraformls = {},
   yamlls = {
     settings = {
