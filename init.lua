@@ -436,6 +436,7 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>sb', require('telescope.builtin').buffers, { desc = '[S]earch [B]uffers' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -454,6 +455,7 @@ vim.defer_fn(function()
       'hcl',
       'html',
       'json',
+      'jsonc',
       'lua',
       'make',
       'python',
@@ -464,7 +466,9 @@ vim.defer_fn(function()
       'vimdoc',
       'yaml',
     },
-
+    ignore_install = {},
+    modules = {},
+    sync_install = false,
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = true,
 

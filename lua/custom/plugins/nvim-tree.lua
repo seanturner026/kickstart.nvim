@@ -27,14 +27,14 @@ return {
                 indent_markers = {
                     enable = true,
                 },
-                icons = {
-                    glyphs = {
-                        folder = {
-                            arrow_closed = "", -- arrow when folder is closed
-                            arrow_open = "", -- arrow when folder is open
-                        },
-                    },
-                },
+                -- icons = {
+                --     glyphs = {
+                --         folder = {
+                --             arrow_closed = "", -- arrow when folder is closed
+                --             arrow_open = "", -- arrow when folder is open
+                --         },
+                --     },
+                -- },
             },
             -- disable window_picker for
             -- explorer to work well with
@@ -50,7 +50,6 @@ return {
                 custom = {
                     ".DS_Store",
                     "__pycache__",
-                    "asds",
                 },
             },
             git = {
