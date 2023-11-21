@@ -4,7 +4,7 @@
 -- - Formatting is triggered via `<leader>f`, but also automatically on save
 return {
     "stevearc/conform.nvim",
-    event = "BufWritePre",     -- load the plugin before saving
+    event = "BufWritePre", -- load the plugin before saving
     keys = {
         {
             "<leader>f",

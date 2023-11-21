@@ -61,13 +61,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.opt.list = true
 vim.opt.listchars:append({ lead = '·' })
+vim.opt.listchars:append({ leadmultispace = '┊ ' })
 vim.opt.listchars:append({ space = '·' })
 vim.opt.listchars:append({ tab = '➞ ' })
 vim.opt.listchars:append({ trail = '·' })
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.textwidth = 120
-
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
