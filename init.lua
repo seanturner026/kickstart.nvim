@@ -365,6 +365,16 @@ require('telescope').setup {
   },
 }
 
+require('onedark').setup {
+  style = 'darker'
+}
+require('onedark').load()
+
+-- Set relative line number as orange (do this after loading theme)
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = 'grey' })
+vim.api.nvim_set_hl(0, 'LineNr', { fg = 'orange' })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = 'grey' })
+
 -- Remove trailing whitespaces
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
@@ -681,6 +691,7 @@ local servers = {
       autoImportCompletion = true
     }
   },
+  tailwindcss = {},
   terraformls = {},
   yamlls = {
     settings = {
@@ -798,6 +809,8 @@ cmp.setup {
     { name = 'path' },
   },
 }
+
+require("cmp").setup({ formatting = { format = require("tailwindcss-colorizer-cmp").formatter } })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
