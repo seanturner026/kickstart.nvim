@@ -43,7 +43,10 @@ P.S. You can delete this when you're done too. It's your config now :)
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+-- necessary for vim-visual-multi https://github.com/mg979/vim-visual-multi/issues/172#issuecomment-1092293500
+vim.g.VM_maps = {
+  ["I BS"] = '', -- disable backspace mapping
+}
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -89,6 +92,7 @@ require('lazy').setup({
   'stevearc/conform.nvim',
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
+  'mg979/vim-visual-multi',
   {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
@@ -234,7 +238,6 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
-
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -350,6 +353,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = highlight_group,
   pattern = '*',
+})
+
+-- [[ Gofmt ]]
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    require('go.format').goimport()
+  end,
+  group = format_sync_grp,
 })
 
 -- [[ Configure Telescope ]]

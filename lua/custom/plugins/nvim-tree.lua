@@ -27,6 +27,13 @@ return {
                 indent_markers = {
                     enable = true,
                 },
+                icons = {
+                    glyphs = {
+                        git = {
+                            untracked = ""
+                        }
+                    }
+                }
             },
             -- disable window_picker for
             -- explorer to work well with
