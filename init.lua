@@ -121,7 +121,7 @@ require('lazy').setup({
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
-
+      'hrsh7th/cmp-buffer',
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
     },
@@ -238,6 +238,12 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'laytan/tailwind-sorter.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim' },
+    build = 'cd formatter && npm i && npm run build',
+    config = true,
+  },
   -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
@@ -363,6 +369,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require('go.format').goimport()
   end,
   group = format_sync_grp,
+})
+
+require('tailwind-sorter').setup({
+  on_save_enabled = true,
+  on_save_pattern = { '*.html', '*.js', '*.jsx', '*.tsx', '*.twig', '*.hbs', '*.php', '*.heex', '*.astro' }, -- The file patterns to watch and sort.
+  node_path = 'node',
 })
 
 -- [[ Configure Telescope ]]
@@ -704,7 +716,17 @@ local servers = {
       autoImportCompletion = true
     }
   },
-  tailwindcss = {},
+  tailwindcss = {
+    filetypes = {
+      'templ'
+    },
+    init_options = {
+      userLanguages = {
+        templ = "html"
+      }
+    }
+  },
+  templ = {},
   terraformls = {},
   yamlls = {
     settings = {
@@ -778,6 +800,7 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
+---@diagnostic disable: missing-fields
 cmp.setup {
   snippet = {
     expand = function(args)
@@ -820,10 +843,9 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'path' },
+    { name = 'buffer' },
   },
 }
-
-require("cmp").setup({ formatting = { format = require("tailwindcss-colorizer-cmp").formatter } })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
