@@ -4,6 +4,6 @@ return {
     version = "*",
     opts = {
         size = 10,
-        open_mapping = "<c-s>",
+        open_mapping = "<c-t>",
     }
 }
