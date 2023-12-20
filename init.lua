@@ -71,6 +71,14 @@ vim.opt.listchars:append({ trail = '·' })
 vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.textwidth = 120
+
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+vim.opt.scrolloff = 999
+
+vim.opt.inccommand = "split"
+
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
