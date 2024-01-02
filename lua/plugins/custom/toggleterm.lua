@@ -5,5 +5,5 @@ return {
     opts = {
         size = 10,
         open_mapping = "<c-t>",
-    }
+    },
 }

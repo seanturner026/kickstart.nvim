@@ -8,14 +8,16 @@ return {
     keys = {
         {
             "<leader>f",
-            function() require("conform").format({ lsp_fallback = true }) end,
+            function()
+                require("conform").format { lsp_fallback = true }
+            end,
             desc = "Format",
         },
     },
     opts = {
         formatters_by_ft = {
-            -- first use isort and then black
-            python = { "isort", "black" },
+            lua = { "stylua" },
+            python = { "isort", "black" }, -- first use isort and then black
             -- "inject" is a special formatter from conform.nvim, which
             -- formats treesitter-injected code. Basically, this makes
             -- conform.nvim format python codeblocks inside a markdown file.
