@@ -6,20 +6,19 @@ return {
         "L3MON4D3/LuaSnip",
         "saadparwaiz1/cmp_luasnip",
         -- Adds LSP completion capabilities
+        "hrsh7th/cmp-buffer",
+        "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
-        "hrsh7th/cmp-buffer",
+        "onsails/lspkind.nvim", -- Required for fancy hover
         "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
-        "onsails/lspkind.nvim",         -- Required for fancy hover
     },
     config = function()
-        require("cmp").setup({
+        local cmp = require("cmp")
+        cmp.setup({
             window = {
-                completion = {
-                    winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,Search:None",
-                    col_offset = -3,
-                    side_padding = 0,
-                },
+                completion = cmp.config.window.bordered(),
+                documentation = cmp.config.window.bordered(),
             },
             formatting = {
                 fields = { "kind", "abbr", "menu" },

@@ -1,8 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.opt.ignorecase = true
-
 vim.opt.list = true
 vim.opt.listchars:append({ lead = "·" })
 vim.opt.listchars:append({ leadmultispace = "┊ " })
