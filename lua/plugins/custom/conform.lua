@@ -9,7 +9,7 @@ return {
         {
             "<leader>f",
             function()
-                require("conform").format { lsp_fallback = true }
+                require("conform").format({ lsp_fallback = true })
             end,
             desc = "Format",
         },
@@ -22,6 +22,7 @@ return {
             -- formats treesitter-injected code. Basically, this makes
             -- conform.nvim format python codeblocks inside a markdown file.
             markdown = { "inject" },
+            yaml = { "prettier" },
         },
         -- enable format-on-save
         format_on_save = {
