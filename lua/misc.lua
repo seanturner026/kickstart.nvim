@@ -354,7 +354,7 @@ local servers = {
                 schemaStore = {
                     -- Must disable built-in schemaStore support to use
                     -- schemas from SchemaStore.nvim plugin
-                    enable = false,
+                    enable = true,
                     -- Avoid TypeError: Cannot read properties of undefined (reading "length")
                     url = "",
                 },

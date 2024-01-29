@@ -34,3 +34,7 @@ vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better compl
 vim.o.termguicolors = true
 
 vim.wo.number = true -- Make line numbers default
+
+-- Transparent folds
+vim.o.foldtext = ""
+vim.o.fillchars = "fold: "
