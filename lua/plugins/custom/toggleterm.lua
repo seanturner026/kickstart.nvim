@@ -4,6 +4,7 @@ return {
     version = "*",
     opts = {
         size = 10,
+        direction = "float",
         open_mapping = "<c-t>",
     },
 }

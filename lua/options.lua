@@ -15,8 +15,6 @@ vim.opt.textwidth = 120
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
-vim.opt.scrolloff = 999
-
 vim.opt.inccommand = "split"
 
 -- See `:help vim.o`
