@@ -36,3 +36,6 @@ vim.wo.number = true -- Make line numbers default
 -- Transparent folds
 vim.o.foldtext = ""
 vim.o.fillchars = "fold: "
+
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
