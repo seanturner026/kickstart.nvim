@@ -6,13 +6,12 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
 vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
     callback = function()
         vim.highlight.on_yank()
     end,
-    group = highlight_group,
-    pattern = "*",
 })
 
 require("telescope").setup({
@@ -83,6 +82,7 @@ end
 -- local function telescope_frecency_find_files()
 --     require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
 
+local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
 vim.keymap.set("n", "<leader>s/", telescope_live_grep_open_files, { desc = "[S]earch [/] in Open Files" })
 vim.keymap.set("n", "<leader>sb", require("telescope.builtin").buffers, { desc = "[S]earch [B]uffers" })
@@ -92,6 +92,9 @@ vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { des
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sG", ":LiveGrepGitRoot<cr>", { desc = "[S]earch by [G]rep on Git Root" })
 vim.keymap.set("n", "<leader>sh", require("telescope.builtin").help_tags, { desc = "[S]earch [H]elp" })
+vim.keymap.set("n", "<leader>sn", function()
+    builtin.find_files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "[S]earch [N]eovim files" })
 vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = "[S]earch [R]esume" })
 vim.keymap.set("n", "<leader>ss", require("telescope.builtin").builtin, { desc = "[S]earch [S]elect Telescope" })
 vim.keymap.set("n", "<leader>sw", require("telescope.builtin").grep_string, { desc = "[S]earch current [W]ord" })
@@ -130,6 +133,7 @@ vim.defer_fn(function()
             "sql",
             "terraform",
             "toml",
+            "javascript",
             "vim",
             "vimdoc",
             "yaml",
@@ -412,7 +416,6 @@ local luasnip = require("luasnip")
 luasnip.config.setup({})
 require("luasnip.loaders.from_vscode").lazy_load()
 
----@diagnostic disable: missing-fields
 cmp.setup({
     snippet = {
         expand = function(args)
@@ -454,7 +457,6 @@ cmp.setup({
     sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "path" },
         { name = "buffer" },
     },
 })

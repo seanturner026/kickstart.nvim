@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.have_nerd_font = true
 
 vim.opt.list = true
 vim.opt.listchars:append({ lead = "·" })
@@ -21,7 +22,7 @@ vim.opt.inccommand = "split"
 vim.o.hlsearch = false                 -- Set highlight on search
 vim.o.mouse = "a"                      -- Enable mouse mode
 vim.o.clipboard = "unnamedplus"        -- Sync clipboard between OS and Neovim.
-vim.o.breakindent = true               -- Enable break indent
+vim.o.breakindent = false              -- Disable break indent
 vim.o.undofile = true                  -- Save undo history
 vim.o.ignorecase = true                -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.smartcase = true

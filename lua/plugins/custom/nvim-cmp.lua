@@ -10,7 +10,7 @@ return {
         "hrsh7th/cmp-cmdline",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
-        "onsails/lspkind.nvim", -- Required for fancy hover
+        "onsails/lspkind.nvim",         -- Required for fancy hover
         "rafamadriz/friendly-snippets", -- Adds a number of user-friendly snippets
     },
     config = function()

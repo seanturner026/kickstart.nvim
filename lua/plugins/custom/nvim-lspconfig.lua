@@ -58,6 +58,18 @@ return {
                     return
                 end
 
+                if client and client.server_capabilities.documentHighlightProvider then
+                    vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+                        buffer = args.buf,
+                        callback = vim.lsp.buf.document_highlight,
+                    })
+
+                    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+                        buffer = args.buf,
+                        callback = vim.lsp.buf.clear_references,
+                    })
+                end
+
                 -- Create an autocmd that will run *before* we save the buffer.
                 --  Run the formatting command for the LSP that has just attached.
                 vim.api.nvim_create_autocmd("BufWritePre", {
