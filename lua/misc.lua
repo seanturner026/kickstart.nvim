@@ -329,10 +329,12 @@ local servers = {
     jsonls = {},
     -- https://microsoft.github.io/pyright/#/settings?id=pyright-settings
     pyright = {
+        enabled = false,
         analyses = {
             autoImportCompletion = true,
         },
     },
+    basedpyright = {},
     tailwindcss = {
         filetypes = {
             "templ",
