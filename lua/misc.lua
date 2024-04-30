@@ -26,7 +26,6 @@ require("telescope").setup({
 })
 
 require("telescope").load_extension("fzf")
--- pcall(require("telescope").load_extension("frecency"))
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
@@ -79,15 +78,11 @@ local function telescope_live_grep_open_files()
     require("telescope.builtin").live_grep({ grep_open_files = true, prompt_title = "Live Grep in Open Files" })
 end
 
--- local function telescope_frecency_find_files()
---     require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
-
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>gf", require("telescope.builtin").git_files, { desc = "Search [G]it [F]iles" })
 vim.keymap.set("n", "<leader>s/", telescope_live_grep_open_files, { desc = "[S]earch [/] in Open Files" })
 vim.keymap.set("n", "<leader>sb", require("telescope.builtin").buffers, { desc = "[S]earch [B]uffers" })
 vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
--- vim.keymap.set("n", "<leader>sf", telescope_frecency_find_files, { desc = "[S]earch [F]iles (frecency)" })
 vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files, { desc = "[S]earch [F]iles" })
 vim.keymap.set("n", "<leader>sg", require("telescope.builtin").live_grep, { desc = "[S]earch by [G]rep" })
 vim.keymap.set("n", "<leader>sG", ":LiveGrepGitRoot<cr>", { desc = "[S]earch by [G]rep on Git Root" })
@@ -104,7 +99,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()
         if vim.fn.argv(0) == "" then
             require("telescope.builtin").find_files()
-            -- require("telescope").extensions.frecency.frecency({ workspace = "CWD" })
         end
     end,
 })
