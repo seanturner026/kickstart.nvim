@@ -40,3 +40,9 @@ vim.o.fillchars = "fold: "
 
 vim.opt.spell = true
 vim.opt.spelllang = "en_us"
+
+vim.filetype.add({
+    extension = {
+        tf = "terraform",
+    },
+})
