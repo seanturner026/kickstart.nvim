@@ -2,10 +2,8 @@
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- Easy find and replace.
-vim.keymap.set({ "v" }, "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
-    { desc = "Open search and replace for currently selected text" })
-vim.keymap.set({ "n" }, "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>",
-    { desc = "Open search and replace for word under cursor" })
+vim.keymap.set({ "v" }, "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { desc = "Open search and replace for currently selected text" })
+vim.keymap.set({ "n" }, "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>", { desc = "Open search and replace for word under cursor" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
@@ -43,3 +41,25 @@ vim.keymap.set("n", "dd", function()
     end
     return "dd"
 end, { expr = true })
+
+-- Preserve cursor position when yanking
+-- https://nanotipsforvim.prose.sh/sticky-yank
+local cursorPreYank
+
+vim.keymap.set({ "n", "x" }, "y", function()
+    cursorPreYank = vim.api.nvim_win_get_cursor(0)
+    return "y"
+end, { expr = true })
+
+vim.keymap.set("n", "Y", function()
+    cursorPreYank = vim.api.nvim_win_get_cursor(0)
+    return "y$"
+end, { expr = true })
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    callback = function()
+        if vim.v.event.operator == "y" and cursorPreYank then
+            vim.api.nvim_win_set_cursor(0, cursorPreYank)
+        end
+    end,
+})
