@@ -199,7 +199,10 @@ end, 0)
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+    if client.name == "terraformls" then
+        client.server_capabilities.semanticTokensProvider = nil
+    end
     -- Create a function that lets us more easily define mappings specific for LSP related items. It sets the mode, buffer
     -- and description for us each time.
     local nmap = function(keys, func, desc)
