@@ -1,14 +1,15 @@
+-- https://github.com/nvim-lualine/lualine.nvim/blob/f2de8f2fd685ae3242febc9dc918028d44ba9cd1/examples/bubbles.lua
 return {
     "nvim-lualine/lualine.nvim",
     config = function()
         local colors = {
+            black = "#080808",
             blue = "#80a0ff",
             cyan = "#79dac8",
-            black = "#080808",
-            white = "#c6c6c6",
+            grey = "#303030",
             red = "#ff5189",
             violet = "#d183e8",
-            grey = "#303030",
+            white = "#c6c6c6",
         }
 
         local bubbles_theme = {
@@ -39,7 +40,7 @@ return {
                 lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
                 lualine_b = { "filename", "branch" },
                 lualine_c = {
-                    "%=", --[[ add your center compoentnts here in place of this comment ]]
+                    "%=", --[[ add your center components here in place of this comment ]]
                 },
                 lualine_x = {},
                 lualine_y = { "filetype", "progress" },
