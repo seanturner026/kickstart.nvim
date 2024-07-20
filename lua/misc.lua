@@ -455,8 +455,9 @@ cmp.setup({
         end, { "i", "s" }),
     }),
     sources = {
+        { name = "vsnip" },
         { name = "nvim_lsp" },
-        { name = "luasnip" },
+        -- { name = "luasnip" },
         { name = "buffer" },
     },
 })
