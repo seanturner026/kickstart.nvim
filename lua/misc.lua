@@ -364,6 +364,7 @@ local servers = {
                 schemas = {
                     ["kubernetes"] = "*.{yaml,yml}",
                     -- JSON & YAML schemas http://schemastore.org/json/
+                    ["https://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
                     ["https://json.schemastore.org/circleciconfig"] = ".circleci/**/*.{yml,yaml}",
                     ["https://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
                     ["https://json.schemastore.org/github-workflow"] = ".github/workflows/*.{yml,yaml}",
