@@ -201,6 +201,7 @@ end, 0)
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
     if client.name == "terraformls" then
+        vim.bo.commentstring = "// %s"
         client.server_capabilities.semanticTokensProvider = nil
     end
     -- Create a function that lets us more easily define mappings specific for LSP related items. It sets the mode, buffer
