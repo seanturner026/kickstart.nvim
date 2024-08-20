@@ -325,9 +325,10 @@ local servers = {
         enabled = false,
         analyses = {
             autoImportCompletion = true,
+            typeCheckingMode = "basic",
         },
     },
-    basedpyright = {},
+    -- basedpyright = {},
     tailwindcss = {
         filetypes = {
             "templ",
