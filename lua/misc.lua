@@ -24,6 +24,15 @@ require("telescope").setup({
                 ["<C-k>"] = require("telescope.actions").move_selection_previous,
             },
         },
+        file_ignore_patterns = {
+            ".git",
+            "node_modules",
+        },
+    },
+    pickers = {
+        find_files = {
+            hidden = true,
+        },
     },
 })
 
