@@ -52,12 +52,6 @@ return {
                     return
                 end
 
-                -- Tsserver usually works poorly. Sorry you work with bad languages
-                -- You can remove this line if you know what you"re doing :)
-                if client.name == "tsserver" then
-                    return
-                end
-
                 if client and client.server_capabilities.documentHighlightProvider then
                     vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
                         buffer = args.buf,

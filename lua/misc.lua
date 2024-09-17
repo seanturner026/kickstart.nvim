@@ -33,6 +33,9 @@ require("telescope").setup({
         find_files = {
             hidden = true,
         },
+        lsp_document_symbols = {
+            symbol_width = 60,
+        },
     },
 })
 
@@ -290,7 +293,7 @@ require("mason-lspconfig").setup({
 local servers = {
     -- clangd = {},
     -- rust_analyzer = {},
-    -- tsserver = {},
+    -- ts_ls = {},
     bashls = {},
     docker_compose_language_service = {},
     dockerls = {},
