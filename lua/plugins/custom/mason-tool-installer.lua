@@ -6,12 +6,10 @@ return {
     },
     opts = {
         ensure_installed = {
-            -- "basedpyright", -- LSP for python
-            "black",   -- formatter
-            "isort",   -- organize imports
-            "pyright", -- LSP for python
-            -- "ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
-            "taplo",   -- LSP for toml (for pyproject.toml files)
+            "black",    -- formatter
+            "isort",    -- organize imports
+            "ruff-lsp", -- linter for python (includes flake8, pep8, etc.)
+            "taplo",    -- LSP for toml (for pyproject.toml files)
         },
     },
 }

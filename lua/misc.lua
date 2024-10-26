@@ -340,15 +340,6 @@ local servers = {
     helm_ls = {},
     html = { filetypes = { "html", "twig", "hbs" } },
     jsonls = {},
-    -- https://microsoft.github.io/pyright/#/settings?id=pyright-settings
-    pyright = {
-        enabled = false,
-        analyses = {
-            autoImportCompletion = true,
-            typeCheckingMode = "basic",
-        },
-    },
-    -- basedpyright = {},
     tailwindcss = {
         filetypes = {
             "templ",

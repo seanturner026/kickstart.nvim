@@ -42,8 +42,10 @@ vim.keymap.set("n", "dd", function()
     return "dd"
 end, { expr = true })
 
--- Preserve cursor position when yanking
--- https://nanotipsforvim.prose.sh/sticky-yank
+-- Format with Black
+vim.keymap.set("n", "<leader>fmp", ":silent !/Users/sean/.local/bin/black -l 120 --preview --enable-unstable-feature string_processing %<cr>")
+
+-- Preserve cursor position when yanking https://nanotipsforvim.prose.sh/sticky-yank
 local cursorPreYank
 
 vim.keymap.set({ "n", "x" }, "y", function()
