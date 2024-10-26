@@ -45,7 +45,7 @@ vim.keymap.set("n", "dd", function()
 end, { expr = true })
 
 -- Format with Black
-vim.keymap.set("n", "<leader>fmp", ":silent !black -l 120 --preview --enable-unstable-feature string_processing %<cr>")
+vim.keymap.set("n", "<leader>fb", ":silent !black -l 120 --preview --enable-unstable-feature string_processing %<cr>")
 
 -- Preserve cursor position when yanking https://nanotipsforvim.prose.sh/sticky-yank
 local cursorPreYank
