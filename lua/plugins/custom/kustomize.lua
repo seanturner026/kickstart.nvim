@@ -4,11 +4,10 @@ return {
     ft = "yaml",
     opts = {
         enable_key_mappings = false,
-        build = { additional_args = { "--enable-helm", "--load-restrictor LoadRestrictionsNone" } },
+        build = { additional_args = { "--enable-helm", "--load-restrictor=LoadRestrictionsNone" } },
     },
     config = function(opts)
         require("kustomize").setup({ opts })
-        -- default keybindings, adjust to your needs
         vim.keymap.set("n", "<leader>kb", "<cmd>lua require('kustomize').build()<cr>", { noremap = true })
         vim.keymap.set("n", "<leader>kk", "<cmd>lua require('kustomize').kinds()<cr>", { noremap = true })
         vim.keymap.set("n", "<leader>kl", "<cmd>lua require('kustomize').list_resources()<cr>", { noremap = true })
