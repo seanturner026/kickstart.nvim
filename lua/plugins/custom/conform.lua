@@ -27,6 +27,8 @@ return {
 
         conform.formatters.black = {
             prepend_args = {
+                "--line-length",
+                "120",
                 "--preview",
                 "--enable-unstable-feature=string_processing",
             },
