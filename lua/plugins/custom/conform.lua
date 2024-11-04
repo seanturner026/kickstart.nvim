@@ -10,6 +10,7 @@ return {
 
         conform.setup({
             formatters_by_ft = {
+                cue = { "cueimports", "cuepls" },
                 python = { "isort", "black" },
                 lua = { "stylua" },
                 -- "inject" is a special formatter from conform.nvim, which
