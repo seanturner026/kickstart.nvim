@@ -8,11 +8,11 @@ return {
     },
     config = function(opts)
         require("kustomize").setup({ opts })
-        vim.keymap.set("n", "<leader>kb", "<cmd>lua require('kustomize').build()<cr>", { noremap = true })
-        vim.keymap.set("n", "<leader>kk", "<cmd>lua require('kustomize').kinds()<cr>", { noremap = true })
-        vim.keymap.set("n", "<leader>kl", "<cmd>lua require('kustomize').list_resources()<cr>", { noremap = true })
-        vim.keymap.set("n", "<leader>kp", "<cmd>lua require('kustomize').print_resources()<cr>", { noremap = true })
-        vim.keymap.set("n", "<leader>kv", "<cmd>lua require('kustomize').validate()<cr>", { noremap = true })
-        vim.keymap.set("n", "<leader>kd", "<cmd>lua require('kustomize').deprecations()<cr>", { noremap = true })
+        vim.api.nvim_set_keymap("n", "<leader>kb", "<cmd>KustomizeBuild<cr>", { desc = "Build Kustomize" })
+        vim.api.nvim_set_keymap("n", "<leader>kd", "<cmd>KustomizeDeprecations<cr>", { desc = "Check API deprecations" })
+        vim.api.nvim_set_keymap("n", "<leader>kk", "<cmd>KustomizeListKinds<cr>", { desc = "List Kubernetes Kinds" })
+        vim.api.nvim_set_keymap("n", "<leader>kl", "<cmd>KustomizeListResources<cr>", { desc = "List resources" })
+        vim.api.nvim_set_keymap("n", "<leader>kp", "<cmd>KustomizePrintResources<cr>", { desc = "Print resources" })
+        vim.api.nvim_set_keymap("n", "<leader>kv", "<cmd>KustomizeValidate<cr>", { desc = "Validate file" })
     end,
 }
