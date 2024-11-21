@@ -292,7 +292,7 @@ require("mason-lspconfig").setup({
 --  define the property "filetypes" to the map in question.
 local servers = {
     -- clangd = {},
-    -- rust_analyzer = {},
+    rust_analyzer = {},
     -- ts_ls = {},
     bashls = {},
     docker_compose_language_service = {},
