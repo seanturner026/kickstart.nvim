@@ -5,9 +5,10 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 vim.api.nvim_create_user_command("Q", "q", {})
 vim.api.nvim_create_user_command("W", "w", {})
 vim.api.nvim_create_user_command("WQ", "wq", {})
-vim.api.nvim_create_user_command("WQa", "wq", {})
+vim.api.nvim_create_user_command("WQA", "wqa", {})
+vim.api.nvim_create_user_command("WQa", "wqa", {})
 vim.api.nvim_create_user_command("Wq", "wq", {})
-vim.api.nvim_create_user_command("Wqa", "wq", {})
+vim.api.nvim_create_user_command("Wqa", "wqa", {})
 
 -- Easy find and replace.
 vim.keymap.set({ "v" }, "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { desc = "Open search and replace for currently selected text" })
