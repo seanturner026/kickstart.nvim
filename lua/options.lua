@@ -45,8 +45,9 @@ vim.opt.spelllang = "en_us"
 
 vim.filetype.add({
     extension = {
-        json5 = "jsonc",
         hcl = "terraform",
+        hujson = "jsonc",
+        json5 = "jsonc",
         tf = "terraform",
     },
 })
