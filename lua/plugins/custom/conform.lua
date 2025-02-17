@@ -1,7 +1,3 @@
--- Formatting client: conform.nvim
--- - configured to use black & isort in python
--- - use the taplo-LSP for formatting in toml
--- - Formatting is triggered via `<leader>f`, but also automatically on save
 return {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- load the plugin before saving
@@ -10,8 +6,8 @@ return {
 
         conform.setup({
             formatters_by_ft = {
-                cue = { "cueimports", "cuepls" },
-                python = { "isort", "black" },
+                cue = { "cueimports" },
+                python = { "isort", "ruff_format" },
                 lua = { "stylua" },
                 -- "inject" is a special formatter from conform.nvim, which
                 -- formats treesitter-injected code. Basically, this makes
@@ -25,21 +21,5 @@ return {
             -- LSP can handle the formatting for us
             format_on_save = { timeout_ms = 500, lsp_format = "fallback", async = false },
         })
-
-        conform.formatters.black = {
-            prepend_args = {
-                "--line-length",
-                "120",
-                "--preview",
-                "--enable-unstable-feature=string_processing",
-            },
-        }
-
-        conform.formatters.isort = {
-            prepend_args = {
-                "--profile",
-                "black",
-            },
-        }
     end,
 }

@@ -298,6 +298,14 @@ local servers = {
     rust_analyzer = {},
     -- ts_ls = {},
     bashls = {},
+    basedpyright = {
+        analysis = {
+            autoImportCompletions = true,
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            typeCheckingMode = "off", -- standard, strict, all, off, basic
+        },
+    },
     docker_compose_language_service = {},
     dockerls = {},
     gopls = {
