@@ -19,6 +19,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.opt.inccommand = "split"
+vim.opt.incsearch = true
 
 -- See `:help vim.o`
 vim.o.hlsearch = false                 -- Set highlight on search
