@@ -364,6 +364,7 @@ local servers = {
     },
     templ = {},
     terraformls = {},
+    tilt = {},
     yamlls = {
         settings = {
             redhat = { telemetry = { enabled = false } },
