@@ -22,7 +22,6 @@ vim.opt.inccommand = "split"
 vim.opt.incsearch = true
 
 -- See `:help vim.o`
-vim.o.hlsearch = false                 -- Set highlight on search
 vim.o.mouse = "a"                      -- Enable mouse mode
 vim.o.clipboard = "unnamedplus"        -- Sync clipboard between OS and Neovim.
 vim.o.breakindent = false              -- Disable break indent
@@ -36,10 +35,6 @@ vim.o.completeopt = "menuone,noselect" -- Set completeopt to have a better compl
 vim.o.termguicolors = true
 
 vim.wo.number = true -- Make line numbers default
-
-vim.diagnostic.config({
-    virtual_lines = true,
-})
 
 -- Transparent folds
 vim.o.foldtext = ""
