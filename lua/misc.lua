@@ -348,7 +348,6 @@ local servers = {
             },
         },
     },
-    harper_ls = {},
     helm_ls = {},
     html = { filetypes = { "html", "twig", "hbs" } },
     jsonls = {},
