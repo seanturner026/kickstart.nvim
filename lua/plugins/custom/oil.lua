@@ -24,8 +24,10 @@ return {
                 winblend = 0,
             },
             keymaps = {
-                ["<C-c>"] = false,
                 ["q"] = "actions.close",
+                ["<C-c>"] = false,
+                ["<C-s>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+                ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
             },
             vim.keymap.set("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" }),
         })
