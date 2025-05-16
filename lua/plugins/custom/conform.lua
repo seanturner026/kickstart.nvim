@@ -7,7 +7,13 @@ return {
         conform.setup({
             formatters_by_ft = {
                 cue = { "cueimports" },
-                python = { "isort", "ruff_format" },
+                python = function(bufnr)
+                    if require("conform").get_formatter_info("ruff_format", bufnr).available then
+                        return { "ruff_format" }
+                    else
+                        return { "isort", "black" }
+                    end
+                end,
                 lua = { "stylua" },
                 -- "inject" is a special formatter from conform.nvim, which
                 -- formats treesitter-injected code. Basically, this makes
