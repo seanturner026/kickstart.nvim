@@ -76,3 +76,5 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         end
     end,
 })
+
+vim.keymap.set("x", "D", '"_d', { desc = "Delete without yanking" })
