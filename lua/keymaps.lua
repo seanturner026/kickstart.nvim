@@ -19,7 +19,6 @@ vim.keymap.set({ "v" }, "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>
     { desc = "Open search and replace for currently selected text" })
 vim.keymap.set({ "n" }, "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>",
     { desc = "Open search and replace for word under cursor" })
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })

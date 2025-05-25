@@ -20,6 +20,7 @@ vim.opt.splitright = true
 
 vim.opt.inccommand = "split"
 vim.opt.incsearch = true
+vim.opt.hlsearch = false
 
 -- See `:help vim.o`
 vim.o.mouse = "a"                      -- Enable mouse mode
