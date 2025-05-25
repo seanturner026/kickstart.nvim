@@ -378,16 +378,18 @@ local servers = {
         Lua = {
             workspace = { checkThirdParty = false },
             telemetry = { enable = false },
-            diagnostics = { disable = { "missing-fields" } },
+            diagnostics = {
+                disable = { "missing-fields" },
+                globals = {
+                    "vim",
+                    "require",
+                },
+            },
         },
     },
 }
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
--- capabilities.textDocument.foldingRange = {
---     dynamicRegistration = false,
---     lifeFoldingOnly = true,
--- }
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require("mason-lspconfig")

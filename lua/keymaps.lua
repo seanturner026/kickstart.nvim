@@ -36,12 +36,6 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- -- Disable arrow keys in normal mode
--- vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move"<CR>')
--- vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move"<CR>')
--- vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move"<CR>')
--- vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move"<CR>')
-
 -- Register blackholes
 vim.keymap.set("n", "x", '"_x')
 vim.keymap.set("n", "c", '"_c')
