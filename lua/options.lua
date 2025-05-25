@@ -13,11 +13,11 @@ vim.schedule(function()
 end)
 
 vim.o.breakindent = false -- Disable break indent
-vim.o.undofile = true     -- Save undo history
-vim.o.ignorecase = true   -- Case-insensitive searching UNLESS \C or capital in search
+vim.o.undofile = true -- Save undo history
+vim.o.ignorecase = true -- Case-insensitive searching UNLESS \C or capital in search
 vim.o.smartcase = true
-vim.o.signcolumn = "yes"  -- Keep signcolumn on by default
-vim.o.updatetime = 250    -- Decrease update time
+vim.o.signcolumn = "yes" -- Keep signcolumn on by default
+vim.o.updatetime = 250 -- Decrease update time
 vim.o.timeoutlen = 300
 
 vim.opt.splitbelow = true
