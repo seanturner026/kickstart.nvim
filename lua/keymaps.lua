@@ -15,10 +15,8 @@ vim.keymap.set("n", "n", "nzz")
 vim.keymap.set("n", "N", "Nzz")
 
 -- Easy find and replace.
-vim.keymap.set({ "v" }, "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>',
-    { desc = "Open search and replace for currently selected text" })
-vim.keymap.set({ "n" }, "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>",
-    { desc = "Open search and replace for word under cursor" })
+vim.keymap.set({ "v" }, "<leader>re", '"hy:%s/<C-r>h/<C-r>h/gc<left><left><left>', { desc = "Open search and replace for currently selected text" })
+vim.keymap.set({ "n" }, "<leader>re", ":%s/<C-r><C-w>/<C-r><C-w>/gc<Left><Left><Left>", { desc = "Open search and replace for word under cursor" })
 
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gkzz' : 'k'", { expr = true, silent = true })
@@ -73,6 +71,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         if vim.v.event.operator == "y" and cursorPreYank then
             vim.api.nvim_win_set_cursor(0, cursorPreYank)
         end
+    end,
+})
+
+vim.api.nvim_create_autocmd("TextYankPost", {
+    desc = "Highlight when yanking (copying) text",
+    group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
     end,
 })
 
