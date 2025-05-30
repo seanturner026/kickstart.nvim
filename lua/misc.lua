@@ -391,22 +391,23 @@ local servers = {
 
 local capabilities = require("blink.cmp").get_lsp_capabilities()
 
--- Ensure the servers above are installed
-local mason_lspconfig = require("mason-lspconfig")
+local ensure_installed = vim.tbl_keys(servers or {})
+vim.list_extend(ensure_installed, { "stylua" })
+require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-mason_lspconfig.setup({
-    ensure_installed = vim.tbl_keys(servers),
-})
-
-mason_lspconfig.setup_handlers({
-    function(server_name)
-        require("lspconfig")[server_name].setup({
-            capabilities = capabilities,
-            on_attach = on_attach,
-            settings = servers[server_name],
-            filetypes = (servers[server_name] or {}).filetypes,
-        })
-    end,
+require("mason-lspconfig").setup({
+    ensure_installed = {}, -- explicitly set to an empty table
+    automatic_installation = false,
+    handlers = {
+        function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
+        end,
+    },
 })
 
 for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/snippets/*.lua", true)) do
