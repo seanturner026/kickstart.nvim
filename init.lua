@@ -1,7 +1,7 @@
-require("options")
-require("plugins.lazy")
-require("keymaps")
-require("theme")
+require("config.options")
+require("core.lazy")
+require("config.keymaps")
+require("config.theme")
 require("misc")
 
 -- The line beneath this is called `modeline`. See `:help modeline`
